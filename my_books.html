@@ -1,0 +1,64 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block title %}My Books | Digital Library{% endblock %}
+
+{% block content %}
+
+<section class="books-section">
+
+    <h1 class="page-title">📚 My Books</h1>
+
+    <!-- CATEGORY FILTER -->
+    <div class="category-filters">
+        <a href="{% url 'my_books' %}" class="filter-btn">All</a>
+
+        {% for category in categories %}
+            <a href="?category={{ category.id }}" class="filter-btn">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <!-- BOOK LIST -->
+    <div class="books-grid">
+        {% for book in books %}
+        <div class="book-card {% if book.is_borrowed %}unavailable{% endif %}">
+
+
+            <!-- 🔹 BOOK IMAGE (NEW) -->
+            {% if book.cover %}
+                <img src="{{ book.cover.url }}" class="book-img">
+            {% endif %}
+
+            <h3 class="book-title">{{ book.title }}</h3>
+
+            <p class="book-author">  
+            <strong>Author:</strong> {{ book.author }}
+            </p>
+            <p class="book-category">
+    <strong>Category:</strong> {{ book.category }}
+</p>
+
+            
+            <!-- SAME BORROW LINK -->
+            {% if not book.is_borrowed %}
+    <a href="{% url 'borrow_book' book.id %}" class="borrow-btn">
+        Borrow Book
+    </a>
+{% else %}
+    <div class="not-available-text">
+        Not Available
+    </div>
+{% endif %}
+
+
+        </div>
+        {% empty %}
+        <p>No books available.</p>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

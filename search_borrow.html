@@ -1,0 +1,63 @@
+{% extends 'books/base.html' %}
+{% block title %}Search & Borrow | Digital Library{% endblock %}
+
+{% block content %}
+
+<section class="search-page">
+{% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+
+    <div class="search-box">
+        <h1>🔍 Search & Borrow Books</h1>
+        <form method="get">
+    <input type="text" name="q"
+       placeholder="Search by title, author, category"
+       value="{{ query }}">
+
+    <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+</form>
+
+    </div>
+
+    <div class="book-grid">
+        {% for book in books %}
+        <div class="book-card">
+
+    {% if book.cover %}
+        <img src="{{ book.cover.url }}" class="book-img">
+    {% endif %}
+
+    <h3>📘 {{ book.title }}</h3>
+    <p>Author: {{ book.author }}</p>
+
+    {% if book.category %}
+        <p class="category">{{ book.category.name }}</p>
+    {% endif %}
+
+    {% if book.is_borrowed %}
+    <button class="borrow-btn unavailable" disabled>
+        Not Available
+    </button>
+{% else %}
+    <a href="{% url 'borrow_book' book.id %}" class="borrow-btn">
+        Borrow Book
+    </a>
+{% endif %}
+
+</div>
+
+        {% empty %}
+        <p>No books found.</p>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

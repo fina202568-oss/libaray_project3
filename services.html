@@ -1,0 +1,72 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block title %}Services | Digital Library{% endblock %}
+
+{% block content %}
+
+<!-- ⚠️ Wrapper class: THIS ensures styles target only Services page -->
+<div class="services-page">
+    <!-- ===== HERO (uses service.jpg) ===== -->
+    <header class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__bg" style="background-image:url('{% static 'books/images/service.jpg' %}');"></div>
+      <div class="hero__content container">
+        <h1 class="hero__title">Our Services</h1>
+        <p class="hero__subtitle">Smart Services for Smart Readers</p>
+      </div>
+    </header>
+
+    <!-- ===== Services ===== -->
+    <section class="section container">
+  <div class="cards-grid">
+
+    <!-- DIGITAL BOOKS -->
+    <article class="card">
+      <a href="{% url 'digital_books' %}" class="card-link">
+        <div class="card__media">
+          <img src="{% static 'books/images/digital books.jpg' %}" alt="Digital Books">
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Digital Books</h3>
+          <p class="card__text">
+            Access thousands of E-books and online journals, anytime, anywhere.
+          </p>
+        </div>
+      </a>
+    </article>
+
+    <!-- DASHBOARD -->
+<article class="card">
+  <a href="{% url 'dashboard' %}" class="card-link">
+    <div class="card__media">
+      <img src="{% static 'books/images/dashboard.jpg' %}" alt="Dashboard">
+    </div>
+    <div class="card__body">
+      <h3 class="card__title">Admin Dashboard</h3>
+      <p class="card__text">
+        Manage books, members, borrow records and view complete system details.
+      </p>
+    </div>
+  </a>
+</article>
+
+    <!-- ONLINE MEMBERSHIP -->
+    <article class="card">
+      <a href="{% url 'online_membership' %}" class="card-link">
+        <div class="card__media">
+          <img src="{% static 'books/images/online membership.jpg' %}" alt="Online Membership">
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Online Membership</h3>
+          <p class="card__text">
+            Register online and enjoy full access to our digital resources.
+          </p>
+        </div>
+      </a>
+    </article>
+
+  </div>
+</section>
+
+{% endblock %}

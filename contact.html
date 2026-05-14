@@ -1,0 +1,60 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="contact-page">
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="success-message">
+        {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+  <div class="contact-header">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Please reach out anytime.</p>
+    <span class="divider"></span>
+  </div>
+
+  <div class="contact-wrapper">
+
+    <div class="contact-info">
+      <div class="info-box">
+        <h3>📍 Address</h3>
+        <p>Central Library, Tokyo</p>
+      </div>
+
+      <div class="info-box">
+        <h3>📧 Email</h3>
+        <p>library@example.com</p>
+      </div>
+
+      <div class="info-box">
+        <h3>📞 Phone</h3>
+        <p>+81 90 1234 5678</p>
+      </div>
+    </div>
+
+    <form class="contact-form" method="POST" id="contactForm">
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="subject" placeholder="Subject">
+      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="map-box map-bottom">
+      <iframe
+        src="https://www.google.com/maps?q=Tokyo&output=embed"
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

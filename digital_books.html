@@ -1,0 +1,64 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'books/css/digital_books.css' %}">
+
+<div class="digital-wrapper">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="digital-header">
+            <h1>Digital Books System</h1>
+            <p>Organized. Searchable. Easy to Borrow.</p>
+        </div>
+
+        <!-- My Books -->
+        <div class="clean-card">
+            <h3>My Books – Category Based Collection</h3>
+            <p>
+                The My Books page displays books in a structured category-wise format.
+                Each category contains 10 books including Book Name, Author Name, and Category Name.
+            </p>
+
+            <div class="category-tags">
+                <span class="tag">Kids</span>
+                <span class="tag">Fiction</span>
+                <span class="tag">Poetry</span>
+                <span class="tag">Manga</span>
+                <span class="tag">Technology</span>
+                <span class="tag">Art</span>
+            </div>
+        </div>
+
+        <!-- Search & Borrow -->
+        <div class="clean-card">
+            <h3>Search & Borrow System</h3>
+            <p>
+                Users can search books by Author Name, Book Title, or Category Name.
+                After finding the desired book, they can directly borrow it using the online borrow feature.
+            </p>
+
+            <ul>
+                <li>Search by Book Name</li>
+                <li>Search by Author</li>
+                <li>Search by Category</li>
+                <li>Easy Borrow Option</li>
+            </ul>
+        </div>
+
+        <!-- Why Digital -->
+        <div class="highlight-box">
+            <h3>Why This Digital Library?</h3>
+            <p>
+                This system makes book management simple, modern, and user-friendly.
+                It allows organized browsing, quick searching, and smooth borrowing —
+                making the library efficient and accessible anytime.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

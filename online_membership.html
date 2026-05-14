@@ -1,0 +1,43 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'books/css/online_membership.css' %}">
+
+<div class="membership-wrapper">
+    <div class="membership-container">
+
+        <!-- Header -->
+        <div class="membership-header">
+            <h1>Online Membership</h1>
+            <p>Register Online & Access Unlimited Digital Resources</p>
+        </div>
+
+        <!-- Membership Card -->
+        <div class="membership-card">
+            <h3>Why Join Our Digital Library?</h3>
+            <p>
+                Our Online Membership system allows users to register digitally
+                and access thousands of books, journals, and learning materials.
+                Members can easily browse categories, search books, and borrow
+                them online anytime.
+            </p>
+
+            <ul>
+                <li>✔ Easy Online Registration</li>
+                <li>✔ Access to All Categories</li>
+                <li>✔ Quick Search & Borrow</li>
+                <li>✔ Track Borrow History</li>
+                <li>✔ Secure User Account</li>
+            </ul>
+
+        <a href="{% url 'register' %}" class="join-btn">
+    Become a Member
+</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

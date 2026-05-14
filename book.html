@@ -1,0 +1,62 @@
+{% extends "books/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Borrow Book: {{ book.title }}</h2>
+
+    <div class="card shadow p-4">
+        <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <!-- Name -->
+            <div class="mb-3">
+                {{ form.customer_name.label_tag }}
+                {{ form.customer_name }}
+                {% if form.customer_name.errors %}
+                    <div class="text-danger">{{ form.customer_name.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <div class="text-danger">{{ form.phone.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="text-danger">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Borrow Date -->
+            <div class="mb-3">
+                {{ form.borrow_date.label_tag }}
+                {{ form.borrow_date }}
+                {% if form.borrow_date.errors %}
+                    <div class="text-danger">{{ form.borrow_date.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Return Date -->
+            <div class="mb-3">
+                {{ form.return_date.label_tag }}
+                {{ form.return_date }}
+                {% if form.return_date.errors %}
+                    <div class="text-danger">{{ form.return_date.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Borrow Now</button>
+            <a href="{% url 'search_borrow' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

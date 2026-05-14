@@ -1,0 +1,48 @@
+{% extends 'books/base.html' %}
+
+
+{% block title %}Home | Digital Library{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Modern Library</h1>
+        <p>Where Knowledge Meets Technology</p>
+        <a href="{% url 'about' %}" class="btn">Discover More</a>
+    </div>
+</section>
+
+<section class="features">
+    <a href="{% url 'search_borrow' %}" class="feature-card">
+        <h3>🔍 Search & Borrow</h3>
+        <p>Easily search for books and borrow online.</p>
+    </a>
+
+    <a href="{% url 'admin_dashboard' %}" class="feature-card">
+        <h3>📊 Administrator Dashboard</h3>
+        <p>Manage books, users, and track borrowings.</p>
+    </a>
+
+    <a href="{% url 'secure_reliable' %}" class="feature-card">
+        <h3>🔒 Secure & Reliable</h3>
+        <p>Safe login and data management.</p>
+    </a>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+const cards = document.querySelectorAll('.feature-card');
+
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight * 0.9;
+    cards.forEach(card => {
+        if (card.getBoundingClientRect().top < triggerBottom) {
+            card.classList.add('visible');
+        }
+    });
+});
+</script>
+{% endblock %}

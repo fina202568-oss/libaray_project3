@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'books/style.css' %}">
+</head>
+<body>
+
+<div class="borrow-card">
+    <h2>Login</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-full">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

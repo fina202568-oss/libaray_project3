@@ -1,0 +1,102 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block title %}About | Digital Library{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="about-hero">
+    <div class="about-overlay">
+        <h1 class="hero-text">About Our Library</h1>
+        <h3 class="hero-text">Combining Tradition with Technology</h3>
+        <p class="hero-text">
+            Our library offers a unique blend of classic books and digital resources.
+            A place for readers, researchers, and innovators to connect and learn.
+        </p>
+    </div>
+</section>
+
+<!-- MISSION VISION VALUES SECTION -->
+<!-- ===== VISION / MISSION / VALUES ===== -->
+<section class="about-mvv">
+
+    <div class="mvv-box">
+        <div class="mvv-icon">
+            <i class="fa-solid fa-eye"></i>
+        </div>
+        <h3>Our Vision</h3>
+        <p>
+            Our vision is to become a reliable and modern digital library platform
+            where knowledge is accessible anytime and anywhere through technology.
+        </p>
+        <ul>
+            <li>Universal digital access to knowledge</li>
+            <li>Encourage lifelong learning</li>
+            <li>Technology-driven education system</li>
+            <li>Future-ready digital library</li>
+        </ul>
+    </div>
+
+    <div class="mvv-box">
+        <div class="mvv-icon">
+            <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h3>Our Mission</h3>
+        <p>
+            Our mission is to simplify library services by integrating digital tools
+            with traditional systems and providing a user-friendly experience.
+        </p>
+        <ul>
+            <li>Fast and accurate book search</li>
+            <li>Easy borrowing & management</li>
+            <li>Simple and user-friendly interface</li>
+            <li>Support students and researchers</li>
+        </ul>
+    </div>
+
+    <div class="mvv-box">
+        <div class="mvv-icon">
+            <i class="fa-solid fa-handshake"></i>
+        </div>
+        <h3>Our Values</h3>
+        <p>
+            We believe that strong values help create a trusted, inclusive,
+            and innovative learning community.
+        </p>
+        <ul>
+            <li>Knowledge sharing</li>
+            <li>Innovation and creativity</li>
+            <li>Respect and inclusiveness</li>
+            <li>Security and trust</li>
+            <li>Community growth</li>
+        </ul>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+const heroTexts = document.querySelectorAll('.hero-text');
+const featureCards = document.querySelectorAll('.feature-card');
+
+function revealOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    heroTexts.forEach(text => {
+        const textTop = text.getBoundingClientRect().top;
+        if (textTop < triggerBottom) text.classList.add('visible');
+    });
+
+    featureCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom) card.classList.add('visible');
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Digital Library{% endblock %}</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'books/style.css' %}">
+</head>
+
+<body>
+<div class="page-wrapper">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="logo">Digital Library</div>
+
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'my_books' %}">My Books</a></li>
+        </ul>
+
+        {% if request.user.is_authenticated %}
+            <span class="user-name">{{ request.user.username }}</span>
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button class="login-btn">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="login-btn">Login</a>
+        {% endif %}
+    </nav>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+    <div class="footer-container">
+
+        <!-- LEFT : Discover -->
+        <div class="footer-left">
+            <h3 class="footer-title">Discover</h3>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+
+            <div class="footer-center">
+    <h3 class="footer-title">Open Library</h3>
+
+<p class="footer-link">
+    <a href="{% url 'about' %}#vision">Vision</a>
+</p>
+<p class="footer-link">
+    <a href="{% url 'about' %}#mission">Mission</a>
+</p>
+<p class="footer-link">
+    <a href="{% url 'about' %}#values">Values</a>
+</p>
+
+</div>
+
+            <div class="footer-center">
+    <h3 class="footer-title">Get in Touch</h3>
+    <p><i class="fa-solid fa-envelope"></i> <a href="{% url 'contact' %}">modernlibrary@gmail.com</a></p>
+    <p>📍 <a href="{% url 'contact' %}">123 Library Lane, City</a></p>
+    <p>📞 <a href="{% url 'contact' %}">+123 456 7890</a></p>
+</div>
+
+
+           <!-- RIGHT : Help -->
+        <div class="footer-right">
+            <h3 class="footer-title">Help</h3>
+
+            <!-- Contact link -->
+            <a href="/contact/" class="help-link">Contact</a>
+
+            <!-- Icons -->
+            <div class="social-icons">
+                <a href="https://www.facebook.com/YOUR_PAGE" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/YOUR_ID" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:youremail@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2024 Modern Library. All rights reserved.
+        </div>
+    </footer>
+
+</div>
+
+<!-- ================= PAGE SCRIPTS ================= -->
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>
